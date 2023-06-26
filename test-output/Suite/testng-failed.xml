@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)">
+    <parameter name="htmlpath" value="report/Spark.html"/>
+    <parameter name="grid" value="no"/>
+    <parameter name="appurl" value="https://subramaniam.aksharatraining.in/pos/public/"/>
+    <parameter name="pptfile" value="prod.properties"/>
+    <classes>
+      <class name="pos.scripts.DemoTest">
+        <methods>
+          <include name="generateReport"/>
+          <include name="postCondition"/>
+          <include name="intReport"/>
+          <include name="testValidLogin"/>
+          <include name="preCondition"/>
+        </methods>
+      </class> <!-- pos.scripts.DemoTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
