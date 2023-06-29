@@ -2,15 +2,30 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
     <line>
-      <![CDATA[hi]]>
+      <![CDATA[Expected Position:4]]>
+    </line>
+    <line>
+      <![CDATA[Expected Text:Suppliers]]>
+    </line>
+    <line>
+      <![CDATA[Actual Text:Suppliers]]>
+    </line>
+    <line>
+      <![CDATA[Do not Ignore the Case]]>
+    </line>
+    <line>
+      <![CDATA[Complete match]]>
     </line>
   </reporter-output>
-  <suite started-at="2023-06-26T04:48:19Z" name="Suite" finished-at="2023-06-26T04:48:49Z" duration-ms="30108">
+  <suite started-at="2023-06-29T05:23:51Z" name="Default suite" finished-at="2023-06-29T05:24:19Z" duration-ms="28428">
     <groups>
+      <group name="Suppliers">
+        <method signature="POS_Suppliers_01.testPOS_Suppliers_01_Step1()[pri:5, instance:pos.scripts.POS_Suppliers_01@38467116]" name="testPOS_Suppliers_01_Step1" class="pos.scripts.POS_Suppliers_01"/>
+      </group> <!-- Suppliers -->
     </groups>
-    <test started-at="2023-06-26T04:48:19Z" name="Test" finished-at="2023-06-26T04:48:49Z" duration-ms="30108">
-      <class name="pos.scripts.DemoTest">
-        <test-method is-config="true" signature="intReport(java.lang.String)[pri:0, instance:pos.scripts.DemoTest@22a637e7]" started-at="2023-06-26T04:48:16Z" name="intReport" finished-at="2023-06-26T04:48:19Z" duration-ms="2525" status="PASS">
+    <test started-at="2023-06-29T05:23:51Z" name="Default test" finished-at="2023-06-29T05:24:19Z" duration-ms="28428">
+      <class name="pos.scripts.POS_Suppliers_01">
+        <test-method is-config="true" signature="intReport(java.lang.String)[pri:0, instance:pos.scripts.POS_Suppliers_01@38467116]" started-at="2023-06-29T05:23:51Z" name="intReport" finished-at="2023-06-29T05:23:51Z" duration-ms="505" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -21,7 +36,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- intReport -->
-        <test-method is-config="true" signature="preCondition(java.lang.String, java.lang.String, java.lang.String, java.lang.reflect.Method)[pri:0, instance:pos.scripts.DemoTest@22a637e7]" started-at="2023-06-26T04:48:19Z" name="preCondition" finished-at="2023-06-26T04:48:47Z" duration-ms="28402" status="PASS">
+        <test-method is-config="true" signature="preCondition(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:pos.scripts.POS_Suppliers_01@38467116]" started-at="2023-06-29T05:23:51Z" name="preCondition" finished-at="2023-06-29T05:24:12Z" duration-ms="20490" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -38,38 +53,60 @@
                 <![CDATA[qa.properties]]>
               </value>
             </param>
-            <param index="3">
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- preCondition -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:pos.scripts.POS_Suppliers_01@38467116]" started-at="2023-06-29T05:24:12Z" name="beforeMethod" finished-at="2023-06-29T05:24:13Z" duration-ms="1299" status="PASS">
+          <params>
+            <param index="0">
               <value>
-                <![CDATA[public void pos.scripts.DemoTest.testA()]]>
+                <![CDATA[public void pos.scripts.POS_Suppliers_01.testPOS_Suppliers_01_Step1()]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- preCondition -->
-        <test-method signature="testA()[pri:0, instance:pos.scripts.DemoTest@22a637e7]" started-at="2023-06-26T04:48:47Z" name="testA" finished-at="2023-06-26T04:48:47Z" duration-ms="11" status="PASS">
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="testPOS_Suppliers_01_Step1()[pri:5, instance:pos.scripts.POS_Suppliers_01@38467116]" started-at="2023-06-29T05:24:13Z" name="testPOS_Suppliers_01_Step1" finished-at="2023-06-29T05:24:19Z" duration-ms="5691" status="PASS">
           <reporter-output>
             <line>
-              <![CDATA[hi]]>
+              <![CDATA[Expected Position:4]]>
+            </line>
+            <line>
+              <![CDATA[Expected Text:Suppliers]]>
+            </line>
+            <line>
+              <![CDATA[Actual Text:Suppliers]]>
+            </line>
+            <line>
+              <![CDATA[Do not Ignore the Case]]>
+            </line>
+            <line>
+              <![CDATA[Complete match]]>
             </line>
           </reporter-output>
-        </test-method> <!-- testA -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:pos.scripts.DemoTest@22a637e7]" started-at="2023-06-26T04:48:47Z" name="postCondition" finished-at="2023-06-26T04:48:49Z" duration-ms="1616" status="PASS">
+        </test-method> <!-- testPOS_Suppliers_01_Step1 -->
+        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:pos.scripts.POS_Suppliers_01@38467116]" started-at="2023-06-29T05:24:19Z" name="postCondition" finished-at="2023-06-29T05:24:19Z" duration-ms="3" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testA status=SUCCESS method=DemoTest.testA()[pri:0, instance:pos.scripts.DemoTest@22a637e7] output=hi]]]>
+                <![CDATA[[TestResult name=testPOS_Suppliers_01_Step1 status=SUCCESS method=POS_Suppliers_01.testPOS_Suppliers_01_Step1()[pri:5, instance:pos.scripts.POS_Suppliers_01@38467116] output=Expected Position:4]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postCondition -->
-        <test-method is-config="true" signature="generateReport()[pri:0, instance:pos.scripts.DemoTest@22a637e7]" started-at="2023-06-26T04:48:49Z" name="generateReport" finished-at="2023-06-26T04:48:51Z" duration-ms="1660" status="PASS">
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:pos.scripts.POS_Suppliers_01@38467116]" started-at="2023-06-29T05:24:19Z" name="afterMethod" finished-at="2023-06-29T05:24:19Z" duration-ms="893" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="generateReport()[pri:0, instance:pos.scripts.POS_Suppliers_01@38467116]" started-at="2023-06-29T05:24:20Z" name="generateReport" finished-at="2023-06-29T05:24:20Z" duration-ms="663" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateReport -->
-      </class> <!-- pos.scripts.DemoTest -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+      </class> <!-- pos.scripts.POS_Suppliers_01 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

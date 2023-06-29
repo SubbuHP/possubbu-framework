@@ -1,15 +1,44 @@
 package generic;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
 
 public class WebUtil {
 
+	public static boolean verifyElementText(WebElement element, String expectedText,boolean ignoreCase,boolean partialMatch)
+	{
+		String actualText=element.getText();
+		Reporter.log("Expected Text:"+expectedText,true);
+		Reporter.log("Actual Text:"+actualText,true);
+		
+		if(ignoreCase)
+		{
+			actualText=actualText.toLowerCase();
+			expectedText=expectedText.toLowerCase();
+			Reporter.log("Ignore the Case",true);
+		}
+		else
+		{
+			Reporter.log("Do not Ignore the Case",true);
+		}
+		
+		if(partialMatch)
+		{
+			Reporter.log("partial match",true);
+			return actualText.contains(expectedText);
+		}
+		else
+		{
+			Reporter.log("Complete match",true);
+			return actualText.equals(expectedText);
+		}
+	}
+	
 	public static void selectCheckBox(WebDriver driver,String xpath)
 	{
 		driver.findElement(By.xpath(xpath)).click();
@@ -28,47 +57,85 @@ public class WebUtil {
 		}
 	}
 	
-	public static void verifyPageByTitle(WebDriver driver,String expectedTitle,String page)
+	public static boolean verifyPageByTitle(WebDriverWait wait,String expectedTitle,String page)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 		try 
 		{
 			wait.until(ExpectedConditions.titleContains(expectedTitle));
 			System.out.println("Pass:"+page+ " is displayed");
+			return true;
 		}
 		catch (Exception e) 
 		{
 			System.err.println("FAIL:"+page+ " is NOT displayed");
+			return false;
 		}
 		
 	}
 	
-	public static void verifyPageByURL(WebDriver driver,String expectedURL,String page)
+	public static boolean verifyPageByURL(WebDriverWait wait,String expectedURL,String page)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
+
 		try 
 		{
 			wait.until(ExpectedConditions.urlContains(expectedURL));
 			System.out.println("Pass:"+page+ " is displayed");
+			return true;
 		}
 		catch (Exception e) 
 		{
 			System.err.println("FAIL:"+page+ " is NOT displayed");
+			return false;
 		}
 	}
 	
-	public static void verifyPageByElement(WebDriver driver,String xpath,String page)
+	public static boolean verifyPageByElement(WebDriverWait wait,String xpath,String page)
 	{
-		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
+
 		try 
 		{
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 			System.out.println("Pass:"+page+ " is displayed");
+			return true;
 		}
 		catch (Exception e) 
 		{
 			System.err.println("FAIL:"+page+ " is NOT displayed");
+			return false;
 		}
 	}
 	
+	public static boolean verifyPageByElement(WebDriverWait wait,WebElement element,String page)
+	{
+
+		try 
+		{
+			wait.until(ExpectedConditions.visibilityOf(element));
+			Reporter.log("Pass:"+page+ " is displayed",true);
+			return true;
+		}
+		catch (Exception e) 
+		{
+			Reporter.log("FAIL:"+page+ " is NOT displayed",true);
+			return false;
+		}
+	}
+	
+	
+	public static boolean verifyElementIsPresent(WebDriverWait wait,WebElement element,String... elementName)
+	{
+		
+		String name=elementName.length>0? elementName[0]:"Element";
+		try 
+		{
+			wait.until(ExpectedConditions.visibilityOf(element));
+			Reporter.log("Pass: "+name+" is displayed",true);
+			return true;
+		}
+		catch (Exception e) 
+		{
+			Reporter.log("FAIL: "+name+" is NOT displayed",true);
+			return false;
+		}
+	}
 }

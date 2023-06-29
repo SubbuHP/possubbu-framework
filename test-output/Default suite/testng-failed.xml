@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="pos.scripts.DemoTest">
+      <class name="pos.scripts.ValidLogin">
         <methods>
-          <include name="testA"/>
+          <include name="testValidLogin"/>
           <include name="generateReport"/>
           <include name="postCondition"/>
           <include name="intReport"/>
           <include name="preCondition"/>
         </methods>
-      </class> <!-- pos.scripts.DemoTest -->
+      </class> <!-- pos.scripts.ValidLogin -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

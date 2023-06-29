@@ -14,8 +14,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
@@ -43,7 +45,7 @@ public class BaseTest {
 	public WebDriverWait wait;
 
 	@Parameters({"htmlpath"})
-	@BeforeSuite
+	@BeforeSuite(alwaysRun = true)
 	public void intReport(@Optional(DEFAULT_HTMLPATH)  String htmlPath)
 	{
 		report=new ExtentReports();	
@@ -51,17 +53,13 @@ public class BaseTest {
 		report.attachReporter(spark);
 	}
 	
-	@AfterSuite
-	public void generateReport()
-	{
-		report.flush();
-	}
+	
 	
 	@Parameters({"appurl","grid","pptfile"})
-	@BeforeMethod
-	public void preCondition(@Optional(DEFAULT_URL) String appURL,@Optional(DEFAULT_GRID) String grid,@Optional(DEFAULT_PPTFILE) String pptFile,Method method) throws Exception {
-		String testName=method.getName();
-		extentTest = report.createTest(testName);
+	@BeforeClass(alwaysRun = true)
+	public void preCondition(@Optional(DEFAULT_URL) String appURL,@Optional(DEFAULT_GRID) String grid,@Optional(DEFAULT_PPTFILE) String pptFile) throws Exception {
+		
+		extentTest = report.createTest("preCondition");
 		
 		String browser=Util.getProperty(pptFile, "browser");
 		extentTest.info("Browser is:"+browser);
@@ -114,11 +112,19 @@ public class BaseTest {
 		original_driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(lITO));
 		extentTest.info("Set ETO to "+lETO);
 		wait=new WebDriverWait(original_driver, Duration.ofSeconds(lETO));
+		
+	}
+	
+	@BeforeMethod
+	public void beforeMethod(Method method)
+	{
+		String testName=method.getName();
+		extentTest = report.createTest(testName);
 		EventFiringDecorator<WebDriver> decorator=new EventFiringDecorator<WebDriver>(new SeleniumListener(extentTest));
 		driver = decorator.decorate(original_driver);
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void postCondition(ITestResult result) {
 		
 		List<String> output = Reporter.getOutput(result);
@@ -138,7 +144,20 @@ public class BaseTest {
 			imgPath="../images/"+testName+timeStamp+".png";
 			extentTest.fail(msg,MediaEntityBuilder.createScreenCaptureFromPath(imgPath).build());
 		}
+		
+	}
+	
+	@AfterClass
+	public void afterMethod()
+	{
+		extentTest = report.createTest("postCondition");
 		extentTest.info("Closing the browser");
 		driver.quit();
+	}
+	
+	@AfterSuite(alwaysRun = true)
+	public void generateReport()
+	{
+		report.flush();
 	}
 }
